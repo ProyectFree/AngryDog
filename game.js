@@ -11,7 +11,7 @@ let timeLeft = 60;
 let bossActive = false;
 let boss;
 let timer;
-let timerDuration = 40; // 40 seconds for boss
+let timerDuration = 30; // 30 seconds for boss
 let pacman;
 const totalClouds = 50; // Cantidad de nubes
 let clouds = [];
@@ -478,14 +478,19 @@ function startBossLevel() {
         }
     }, bossSpeed);
 
-    // Reiniciar el juego después de derrotar al boss
-    setTimeout(() => {
-        clearInterval(bossInterval); // Detener el movimiento del boss
-        cells[bossPosition].classList.remove('boss'); // Eliminar el boss del tablero
-        bossActive = false; // Desactivar el boss
-        resetGame(); // Reiniciar el juego para el siguiente nivel
-    }, 30000); // Duración del nivel del boss (30 segundos)
+   // Reiniciar el juego después de derrotar al boss
+   setTimeout(() => {
+    clearInterval(bossInterval); // Detener el movimiento del boss
+    cells[bossPosition].classList.remove('boss'); // Eliminar el boss del tablero
+    bossActive = false; // Desactivar el boss
+    alert("Has derrotado al boss! ¡Bien hecho! ¡Pero cuidado aun te persiguen!");
+    resetGame(); // Reiniciar el juego para el siguiente nivel
+}, timerDuration * 1000); // Duración del nivel del boss en milisegundos
+// Actualizar el tiempo del nivel del boss
+timeLeft = timerDuration;
+updateTimer();
 }
+
 // Movimiento de los enemigos
 function moveEnemies() {
     const cells = document.querySelectorAll('.cell');
@@ -513,6 +518,7 @@ function startEnemyMovement() {
 }
 
 // Iniciar el temporizador de nivel
+// Iniciar el temporizador de nivel
 function startTimer() {
     clearInterval(timerInterval);
     timeLeft = 60;
@@ -523,8 +529,13 @@ function startTimer() {
         updateTimer();
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("¡Game Over! Se acabó el tiempo.");
-            resetGame();
+            if (!bossActive) {
+                alert("¡Game Over! Se acabó el tiempo.");
+                window.location.href = 'index.html'; // Redirigir al menú principal
+            } else {
+                alert("Se acabó el tiempo.");
+                resetGame();
+            }
         }
     }, 1000);
 }
