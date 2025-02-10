@@ -7,7 +7,7 @@ let pacmanPosition = 0;
 let score = 0;
 let level = 1;
 let enemySpeed = 1000;
-let timeLeft = 60;
+let timeLeft = 40;
 let bossActive = false;
 let boss;
 let timer;
@@ -33,7 +33,7 @@ const enemyCollisionSound = new Audio('sounds/enemy_collision.mp3');
 const backgroundMusic = new Audio('sounds/background-music.mp3'); // Asegúrate de que la ruta sea correcta
 backgroundMusic.loop = true; // Repetir la música
 
-// Muscia boss
+// Musica boss
 const bossMusic = new Audio('sounds/boss-music.mp3');
 bossMusic.loop = true; // Repetir la música
 
@@ -305,12 +305,12 @@ function showCredits() {
 
 // Subir de nivel
 function levelUp() {
-    if (level < 2) { // Verifica si el nivel es menor que 50
+    if (level < 50) { // Verifica si el nivel es menor que 50
         level += 1;
         enemySpeed *= 0.9;
         updateLevel();
 
-        if (level % 5 === 0) {
+        if (level % 10 === 0) {
             startBossLevel();
         } else {
             resetGame();
@@ -520,7 +520,7 @@ function startEnemyMovement() {
 // Iniciar el temporizador de nivel
 function startTimer() {
     clearInterval(timerInterval);
-    timeLeft = 60;
+    timeLeft = 40;
     updateTimer();
 
     timerInterval = setInterval(() => {
