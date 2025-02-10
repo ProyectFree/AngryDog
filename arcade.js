@@ -7,7 +7,7 @@ let pacmanPosition = 0;
 let score = 0;
 let level = 1;
 let enemySpeed = 1000;
-let timeLeft = 60;
+let timeLeft = 40;
 let bossActive = false;
 let boss;
 let timer;
@@ -242,7 +242,7 @@ function levelUp() {
     enemySpeed *= 0.9;
     updateLevel();
 
-    if (level % 2 === 0) {
+    if (level % 10 === 0) {
         startBossLevel();
     } else {
         resetGame();
@@ -439,7 +439,7 @@ function startEnemyMovement() {
 // Iniciar el temporizador de nivel
 function startTimer() {
     clearInterval(timerInterval);
-    timeLeft = 60;
+    timeLeft = 40;
     updateTimer();
 
     timerInterval = setInterval(() => {
