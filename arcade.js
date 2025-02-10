@@ -11,7 +11,7 @@ let timeLeft = 60;
 let bossActive = false;
 let boss;
 let timer;
-let timerDuration = 40; // 40 seconds for boss
+let timerDuration = 30; // 30 seconds for boss
 let pacman;
 const totalPoints = 20;
 let points = [];
@@ -242,7 +242,7 @@ function levelUp() {
     enemySpeed *= 0.9;
     updateLevel();
 
-    if (level % 5 === 0) {
+    if (level % 2 === 0) {
         startBossLevel();
     } else {
         resetGame();
@@ -402,8 +402,12 @@ function startBossLevel() {
         clearInterval(bossInterval); // Detener el movimiento del boss
         cells[bossPosition].classList.remove('boss'); // Eliminar el boss del tablero
         bossActive = false; // Desactivar el boss
+        alert("Has derrotado al boss! ¡Bien hecho! ¡Pero cuidado aun te persiguen!");
         resetGame(); // Reiniciar el juego para el siguiente nivel
-    }, 30000); // Duración del nivel del boss (30 segundos)
+    }, timerDuration * 1000); // Duración del nivel del boss en milisegundos
+    // Actualizar el tiempo del nivel del boss
+    timeLeft = timerDuration;
+    updateTimer();
 }
 
 // Movimiento de los enemigos
@@ -443,8 +447,13 @@ function startTimer() {
         updateTimer();
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("¡Game Over! Se acabó el tiempo.");
-            resetGame();
+            if (!bossActive) {
+                alert("¡Game Over! Se acabó el tiempo.");
+                window.location.href = 'index.html'; // Redirigir al menú principal
+            } else {
+                alert("Se acabó el tiempo.");
+                resetGame();
+            }
         }
     }, 1000);
 }
