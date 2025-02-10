@@ -518,7 +518,6 @@ function startEnemyMovement() {
 }
 
 // Iniciar el temporizador de nivel
-// Iniciar el temporizador de nivel
 function startTimer() {
     clearInterval(timerInterval);
     timeLeft = 60;
