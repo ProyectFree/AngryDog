@@ -296,11 +296,16 @@ function showCredits() {
     });
 
     document.body.appendChild(creditsScreen);
+
+    // Detener el juego
+    clearInterval(enemyInterval);
+    clearInterval(timerInterval);
+  
 }
 
 // Subir de nivel
 function levelUp() {
-    if (level < 50) { // Verifica si el nivel es menor que 50
+    if (level < 2) { // Verifica si el nivel es menor que 50
         level += 1;
         enemySpeed *= 0.9;
         updateLevel();
