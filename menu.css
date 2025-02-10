@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    background-image: url('img/imagenMenu.webp');
+    background-size: cover; /* Cubre toda la pantalla */
+    background-position: center; /* Posiciona el fondo en el centro */
+    
+}
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    
+}
+
+.menu h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: "Honk", system-ui;
+    font-style: normal;
+    font-variation-settings:
+    "MORF" 45,
+    "SHLN" 89.7;
+    font-size: 400%;
+}
+
+.menu button {
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+    background: linear-gradient(90deg, #ff0000, #ff7300);
+    border: 1px solid #ffffff;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px #8b0000, 0 0 10px #ff7300;
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 #8b0000, 0 0 5px #ff7300;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff7300, #ff0000);
+    box-shadow: 0 6px #ff7300, 0 0 15px #fff;
+}

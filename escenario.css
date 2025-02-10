@@ -1,0 +1,308 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #192282, #4f0460); /* Degradado de fondo */
+    color: #ffffff;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente más divertida */
+    animation: backgroundAnimation 10s infinite alternate; /* Animación de fondo */
+    background-image: url('img/ciudadopacidad.png');
+    background-size: cover; /* Cubre toda la pantalla */
+}
+
+
+@keyframes backgroundAnimation {
+    0% {
+        background-color: #000428;
+    }
+    100% {
+        background-color: #004e92;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(230, 230, 39, 0); /* Brillo bajo */
+        opacity: 0.8; /* Opacidad baja */
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0); /* Brillo alto */
+        opacity: 1; /* Opacidad alta */
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: scale(1); /* Tamaño original */
+    }
+    50% {
+        transform: scale(1.2); /* Aumenta el tamaño al 120% */
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#lives {
+    animation: pulse 2s infinite; /* Animación de pulso */
+}
+
+.luna {
+    position: absolute;
+    width: 200px; /* Ajusta el tamaño de la luna */
+    height: 200px; /* Ajusta el tamaño de la luna */
+    background-color: rgba(138, 9, 164, 0); /* Color de la luna */
+    background-image: url('img/luna.png');
+    background-size: cover; /* La imagen será el 50% de su tamaño original */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+    border-radius: 50%; /* Hace que sea circular */
+    top: -10px; /* Ajusta la posición vertical */
+    right: 50px; /* Ajusta la posición horizontal */
+      transform: translate(-50%, -50%); /* Mueve la luna hacia atrás la mitad de su ancho y alto */
+      animation: rotate 10s linear infinite, glow 2s ease-in-out infinite, scale 3s ease-in-out infinite; /* Añade animaciones de rotación, brillo y escala */
+    }
+
+    #stats-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Sombra para resaltar */
+        margin-bottom: 20px;
+    }
+
+
+    #score {
+        font-size: 2.5rem; /* Tamaño de fuente más grande */
+        color: #ffeb3b; /* Color amarillo */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+        margin: 0 20px; /* Espaciado horizontal */
+        font-family: "Jacquarda Bastarda 9", serif;
+  font-weight: 400;
+  font-style: normal;
+    }
+
+    #level {
+        font-size: 2rem; /* Tamaño de fuente */
+        color: #00ff00; /* Color verde */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+        margin: 0 20px; /* Espaciado horizontal */
+        font-family: "Pixelify Sans", serif;
+        font-optical-sizing: auto;
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    #timer {
+        font-size: 2rem; /* Tamaño de fuente */
+        color: #ff0000; /* Color rojo */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+        margin: 0 20px; /* Espaciado horizontal */
+        font-family: "Rubik Pixels", serif;
+        font-weight: 400;
+        font-style: normal;
+
+    }
+
+    #lives {
+        display: flex;
+        align-items: center;
+        font-size: 2rem; /* Tamaño de fuente */
+        color: #ffffff; /* Color blanco */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+        margin: 0 20px; /* Espaciado horizontal */
+    }
+    
+    .life-icon {
+        width: 30px; /* Tamaño del ícono de vida */
+        height: 30px;
+        background-image: url('img/corazonRetro.png'); /* Ruta de la imagen del ícono de vida */
+        background-size: cover;
+        margin-right: 5px; /* Espaciado entre íconos */
+    }
+
+
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(10, 35px); /* Aumentar el tamaño de las celdas */
+    grid-template-rows: repeat(10, 35px);
+    gap: 3px;
+}
+
+.cell {
+    width: 35px;
+    height: 35px;
+    background-color: #222; /* Color más oscuro para las celdas */
+    border: 1px solid #555; /* Borde más claro */
+    transition: background-color 0.3s; /* Transición suave al pasar el mouse */
+}
+
+
+
+.pacman {
+    background-color: #c6c5bd9a; /* Color amarillo más brillante */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.8); /* Sombra para resaltar */
+    background-image: url('img/gato.png');
+    background-size: cover;
+
+    
+}
+
+.boss {
+    width: 50px; /* Tamaño mayor que los enemigos */
+    height: 50px; /* Tamaño mayor que los enemigos */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición más suave */
+    background-image: url(img/boss.png);
+    background-size: cover;
+    z-index: 1; /* Agrega esta propiedad para que el boss se vea delante del escenario */
+}
+
+.boss:hover {
+    transform: scale(1.1); /* Aumentar el tamaño al pasar el mouse */
+    box-shadow: 0 0 20px #ffeb3b; /* Aumentar la sombra al pasar el mouse */
+    
+}
+
+
+.point {
+    background-image: url('img/comida_p-removebg-preview.png');
+    background-size: cover;
+}
+
+/* Puntos sin comida
+.point {
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 20px;  Aumentar el tamaño de los puntos 
+    height: 20px;
+    margin: auto;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  Sombra para resaltar los puntos 
+} */
+
+.enemy {
+    background-color: #f49b3696; /* Color rojo vibrante */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.8); /* Sombra para resaltar enemigos */
+    background-image: url(img/perro_p-removebg-preview.png);
+    background-size: cover;
+    
+}
+
+#timer {
+    color: #ffeb3b; /* Color amarillo para el temporizador */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+
+.obstacle {
+    background-image: url(img/pared_.png);
+    background-size: cover;
+
+}
+
+/* Sin pared
+.obstacle {
+    background-color: #757575; 
+    border: 2px solid #616161;
+}
+*/
+/* Ladrillo
+.obstacle {
+   
+    background-image: url(img/muro.png);
+    background-size: cover;
+}
+*/
+
+.invulnerable {
+    opacity: 0.5; /* Cambia la opacidad para dar el efecto de parpadeo */
+}
+
+@keyframes cascade {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cascade {
+    animation: cascade 1.3s ease forwards;
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shine {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 235, 59, 0.8), 0 0 40px rgba(255, 235, 59, 0.6), 0 0 60px rgba(255, 235, 59, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 235, 59, 1), 0 0 60px rgba(255, 235, 59, 0.8), 0 0 90px rgba(255, 235, 59, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 235, 59, 0.8), 0 0 40px rgba(255, 235, 59, 0.6), 0 0 60px rgba(255, 235, 59, 0.4);
+    }
+}
+
+
+#pause-button {
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #9403b5; /* Color naranja */
+    color: #ffffff; /* Color blanco */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  #pause-button:hover {
+    background-color: #ffcc00; /* Color naranja claro */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra más grande */
+  }
+  
+  #pause-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra más pequeña */
+  }
